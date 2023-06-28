@@ -64,11 +64,12 @@
             <Rectangle Width="25" Height="50" Fill="Black" Canvas.Left="-50" Canvas.Top="100" />
         </Canvas>
 
-        <UniformGrid>
+        <UniformGrid Columns="2">
             <Button>UniformGrid1</Button>
             <Button>UniformGrid2</Button>
             <Button>UniformGrid3</Button>
-            <Button>UniformGrid4</Button>
+            <Button Content="UniformGrid4" ToolTip="Hello!">
+            </Button>
             <Button>UniformGrid5</Button>
         </UniformGrid>
         
