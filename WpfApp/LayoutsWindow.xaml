@@ -9,6 +9,13 @@
 
 
     <DockPanel>
+        <Button DockPanel.Dock="Right" >Right 1</Button>
+        <Button DockPanel.Dock="Bottom" >Bottom</Button>
+        <Button DockPanel.Dock="Left" >Left</Button>
+        <Button DockPanel.Dock="Right" >Right 2</Button>
+        <Button DockPanel.Dock="Top" >Top</Button>
+        <Button DockPanel.Dock="Right" >Right 3</Button>
+        <Button >Button</Button>
 
         <Grid Background="Aqua" >
             <Grid.ColumnDefinitions>
@@ -33,6 +40,14 @@
             <Button Grid.Column="2" Grid.Row="2" >444</Button>
 
         </Grid>
+
+        <StackPanel>
+            <Button>Stack1</Button>
+            <Button>Stack2</Button>
+            <Button>Stack3</Button>
+            <Button>Stack4</Button>
+            <Button>Stack5</Button>
+        </StackPanel>
 
     </DockPanel>
 </Window>
