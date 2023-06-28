@@ -41,13 +41,21 @@
 
         </Grid>
 
-        <StackPanel>
+        <StackPanel Background="Blue" Orientation="Horizontal">
             <Button>Stack1</Button>
             <Button>Stack2</Button>
-            <Button>Stack3</Button>
-            <Button>Stack4</Button>
+            <Button Padding="25">Stack3</Button>
+            <Button Margin="25, 15, 10, 5">Stack4</Button>
             <Button>Stack5</Button>
         </StackPanel>
+
+        <WrapPanel Orientation="Vertical" VerticalAlignment="Center">
+            <Button>Wrap1</Button>
+            <Button Padding="25">Wrap2</Button>
+            <Button>Wrap3</Button>
+            <Button Margin="50">Wrap 4</Button>
+            <Button>Wrap5</Button>
+        </WrapPanel>
 
     </DockPanel>
 </Window>
