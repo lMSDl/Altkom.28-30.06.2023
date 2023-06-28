@@ -49,13 +49,18 @@
             <Button>Stack5</Button>
         </StackPanel>
 
-        <WrapPanel Orientation="Vertical" VerticalAlignment="Center">
+        <WrapPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button>Wrap1</Button>
             <Button Padding="25">Wrap2</Button>
             <Button>Wrap3</Button>
             <Button Margin="50">Wrap 4</Button>
             <Button>Wrap5</Button>
         </WrapPanel>
+
+
+        <Canvas>
+            <Button>Canvas</Button>
+        </Canvas>
 
     </DockPanel>
 </Window>
