@@ -35,10 +35,10 @@
 
         <PasswordBox PasswordChar="#" MaxLength="10"  Password=""/>
 
-        <CheckBox IsThreeState="True" Content="Main"/>
-        <CheckBox>Value 1</CheckBox>
-        <CheckBox>Value 2</CheckBox>
-        <CheckBox>Value 3</CheckBox>
+        <CheckBox IsThreeState="True" Content="Main" x:Name="CheckBox_Main" Click="CheckBox_Main_Click"/>
+        <CheckBox Click="CheckBox_CheckedChanged" x:Name="CheckBox_V1">Value 1</CheckBox>
+        <CheckBox Click="CheckBox_CheckedChanged" x:Name="CheckBox_V2">Value 2</CheckBox>
+        <CheckBox Click="CheckBox_CheckedChanged" x:Name="CheckBox_V3">Value 3</CheckBox>
 
         <Label>Question 1</Label>
         <RadioButton GroupName="1">Option 1</RadioButton>
@@ -59,7 +59,7 @@
 
         <Image Source="/Images/image.jpg" Width="32" Height="32"/>
 
-        <Button RenderTransformOrigin="0.5,0.5">
+        <Button RenderTransformOrigin="0.5,0.5" Click="Button_Click">
             <Button.RenderTransform>
                 <RotateTransform Angle="{Binding ElementName=MySlider, Path=Value}"/>
             </Button.RenderTransform>
