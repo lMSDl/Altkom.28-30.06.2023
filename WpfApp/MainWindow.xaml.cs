@@ -24,6 +24,8 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
+
+            //AddChild(new Button() { Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0)), Content = "Button 2" });
         }
     }
 }

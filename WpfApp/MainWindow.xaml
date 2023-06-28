@@ -9,8 +9,20 @@
         Title="MainWindow" 
         Height="450" 
         Width="1080">
-    <Grid>
+
+    <!--<Button
+        Content="Button"
+        Background="Red"
+        Foreground="DarkGreen"
+        FontSize="26"
+        />-->
+
+    <Button
+        Background="Red"
+        Foreground="DarkGreen"
+        FontSize="26">
+        My second button
+    </Button>
 
 
-    </Grid>
 </Window>
