@@ -20,6 +20,9 @@
             <Hyperlink NavigateUri="https://www.altkom.pl">i dwa psy</Hyperlink>
         </TextBlock>
 
+        <Label Target="{Binding ElementName=MyTextBox}">S_ay something about yourself:</Label>
+        <Label Content="{Binding ElementName=MyTextBox, Path=Text.Length, Mode=OneWay}"/>
+
         <TextBox Text="sample text"
                  AcceptsReturn="True"
                  AcceptsTab="True"
@@ -56,14 +59,30 @@
 
         <Image Source="/Images/image.jpg" Width="32" Height="32"/>
 
-        <Button>
+        <Button RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <RotateTransform Angle="{Binding ElementName=MySlider, Path=Value}"/>
+            </Button.RenderTransform>
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Images/image.jpg" Width="32" Height="32"/>
                 <Label Content="ImageButton"/>
             </StackPanel>
         </Button>
 
-        <Slider />
+        <Canvas Height="100">
+            <Ellipse Width="100" Height="100" Fill="Black"/>
+            <Line X1="50" Canvas.Left="50" Canvas.Top="50" Stroke="White" StrokeThickness="2">
+                <Line.LayoutTransform>
+                    <RotateTransform Angle="{Binding ElementName=MySlider, Path=Value}"/>
+                </Line.LayoutTransform>
+            </Line>
+        </Canvas>
+
+        <Slider Minimum="-180" Maximum="180" AutoToolTipPlacement="BottomRight"
+                IsSnapToTickEnabled="True"
+                TickFrequency="10"
+                x:Name="MySlider"
+                TickPlacement="Both"/>
 
     </StackPanel>
 </Window>
