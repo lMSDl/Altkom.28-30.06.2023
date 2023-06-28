@@ -7,7 +7,23 @@
         mc:Ignorable="d"
         Title="ItemsControlWindow" Height="450" Width="800">
     <Grid>
-        
+
+        <TabControl SelectedIndex="2" TabStripPlacement="Left" BorderThickness="10" BorderBrush="Pink"> 
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="16" Height="16" Fill="Red"/>
+                        <Label Content="ContentControl"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            
+            <TabItem Header="ListBox"></TabItem>
+            <TabItem Header="ListView"></TabItem>
+            <TabItem Header="DataGrid"></TabItem>
+            
+        </TabControl>
         
     </Grid>
 </Window>
