@@ -68,7 +68,12 @@
             <Button>UniformGrid1</Button>
             <Button>UniformGrid2</Button>
             <Button>UniformGrid3</Button>
-            <Button Content="UniformGrid4" ToolTip="Hello!">
+            <Button Content="UniformGrid4">
+                <Button.ToolTip>
+                    <Viewbox Width="100" Height="100">
+                        <Button>VB</Button>
+                    </Viewbox>
+                </Button.ToolTip>
             </Button>
             <Button>UniformGrid5</Button>
         </UniformGrid>
