@@ -60,24 +60,53 @@
             <TabItem Header="ListBox">
                 <ListBox ItemsSource="{Binding Products}"
                          SelectedItem="{Binding SelectedProduct}"
-                         
                          SelectionMode="Extended"
                          HorizontalContentAlignment="Stretch">
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type models:Product}">
                             <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
                                 <Label Content="Nazwa: "/>
-                                <Label Content="{Binding Name}"/>
+                                <Label Content="{Binding Name}" HorizontalAlignment="Right"/>
                                 <Label Content="Data ważności: "/>
-                                <Label Content="{Binding ExpirationDate}"/>
+                                <Label Content="{Binding ExpirationDate}" HorizontalAlignment="Right"/>
                                 <Label Content="Cena: "/>
-                                <Label Content="{Binding Price}"/>
+                                <Label Content="{Binding Price}" HorizontalAlignment="Right"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </TabItem>
-            <TabItem Header="ListView"></TabItem>
+            <TabItem Header="ListView">
+
+                <ListView ItemsSource="{Binding Products}"
+                          SelectedItem="{Binding SelectedProduct}"
+                          HorizontalContentAlignment="Stretch"
+                          x:Name="MyListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:Product}">
+                            <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
+                                <Label Content="Nazwa: "/>
+                                <Label Content="{Binding Name}" HorizontalAlignment="Right"/>
+                                <Label Content="Data ważności: "/>
+                                <Label Content="{Binding ExpirationDate}" HorizontalAlignment="Right"/>
+                                <Label Content="Cena: "/>
+                                <Label Content="{Binding Price}" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="False">
+                            <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Data ważności" DisplayMemberBinding="{Binding ExpirationDate}"/>
+                            <GridViewColumn Header="Cena" DisplayMemberBinding="{Binding Price}"/>
+                        </GridView>
+                    </ListView.View>
+                    
+                    
+                </ListView>
+                
+            </TabItem>
             <TabItem Header="DataGrid"></TabItem>
             
         </TabControl>

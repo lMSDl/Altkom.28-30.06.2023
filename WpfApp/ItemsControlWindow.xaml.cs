@@ -31,6 +31,11 @@ namespace WpfApp
 
             DataContext = this;
             Products = new Service<Product>(new ProductFaker()).Read();
+
+            var grid = new GridView();
+            MyListView.View = grid;
+            grid.Columns.Add(new GridViewColumn() { Header = "test", DisplayMemberBinding = new Binding("Name") });
+
         }
     }
 }
