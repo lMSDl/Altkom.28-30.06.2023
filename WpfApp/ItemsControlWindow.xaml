@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         xmlns:models="clr-namespace:Models;assembly=Models"
+                    xmlns:properties="clr-namespace:WpfApp.Properties"
         mc:Ignorable="d"
         Title="ItemsControlWindow" Height="450" Width="800">
 
@@ -152,9 +153,9 @@
                           IsReadOnly="False"
                           AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Data ważności" Binding="{Binding ExpirationDate}"/>
-                        <DataGridTextColumn Header="Cena" Binding="{Binding Price}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="{x:Static properties:Resources.Name}" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="{x:Static properties:Resources.ExpirationDate}" Binding="{Binding ExpirationDate}"/>
+                            <DataGridTextColumn Header="{x:Static properties:Resources.Price}" Binding="{Binding Price}" IsReadOnly="True"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 
