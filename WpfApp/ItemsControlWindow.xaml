@@ -107,7 +107,19 @@
                 </ListView>
                 
             </TabItem>
-            <TabItem Header="DataGrid"></TabItem>
+            <TabItem Header="DataGrid">
+                <DataGrid ItemsSource="{Binding Products}"
+                          SelectedItem="{Binding SelectedProduct}"
+                          IsReadOnly="False"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Data ważności" Binding="{Binding ExpirationDate}"/>
+                        <DataGridTextColumn Header="Cena" Binding="{Binding Price}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+            </TabItem>
             
         </TabControl>
         
