@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Models;
+using Services.Bogus;
+using Services.Bogus.Fakers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,9 +23,13 @@ namespace WpfApp
     /// </summary>
     public partial class ItemsControlWindow : Window
     {
+        public IEnumerable<Product> Products { get; set; }
         public ItemsControlWindow()
         {
             InitializeComponent();
+
+            DataContext = this;
+            Products = new Service<Product>(new ProductFaker()).Read();
         }
     }
 }

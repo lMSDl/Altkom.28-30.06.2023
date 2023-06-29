@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
+        xmlns:models="clr-namespace:Models;assembly=Models"
         mc:Ignorable="d"
         Title="ItemsControlWindow" Height="450" Width="800">
     <Grid>
@@ -17,6 +18,43 @@
                         <Label Content="ContentControl"/>
                     </StackPanel>
                 </TabItem.Header>
+                <ScrollViewer>
+                    <ItemsControl ItemsSource="{Binding Products}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type models:Product}">
+                                <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
+                                    <Label Content="Nazwa: "/>
+                                    <Label Content="{Binding Name}"/>
+                                    <Label Content="Data ważności: "/>
+                                    <Label Content="{Binding ExpirationDate}"/>
+                                    <Label Content="Cena: "/>
+                                    <Label Content="{Binding Price}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+
+                        <!--<Label Content="Label1"/>
+                        <Label Content="Label2"/>
+                        <Label Content="Label3"/>
+                        <Label Content="Label4"/>
+
+                        <Button Content="Button1"/>
+                        <Button Content="Button2"/>
+                        <Button Content="Button3"/>
+                        <Button Content="Button4"/>
+
+                        <StackPanel>
+                            <Label Content="Label5"/>
+                            <Button Content="Button5"/>
+                        </StackPanel>-->
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
             </TabItem>
             
             <TabItem Header="ListBox"></TabItem>
