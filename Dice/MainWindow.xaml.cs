@@ -47,16 +47,27 @@ namespace Dice
         }
         private void Button_Remove(object sender, RoutedEventArgs e)
         {
-            Dices.Remove(Dices.Last());
+            Dices.Remove(Dices.LastOrDefault());
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumberOfDices)));
         }
 
         private void Button_Roll(object sender, RoutedEventArgs e)
         {
             var random = new Random((int)DateTime.Now.Ticks);
-            foreach (DiceItem item in Dices)
+            foreach (DiceItem item in Dices.Where(x => !x.IsLocked))
             {
                 item.Number = random.Next(1, 7);
+            }
+        }
+
+        private void Button_Lock(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button button)
+            {
+                if(button.DataContext is DiceItem item)
+                {
+                    item.IsLocked = !item.IsLocked;
+                }
             }
         }
     }

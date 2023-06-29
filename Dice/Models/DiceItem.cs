@@ -10,6 +10,7 @@ namespace Dice.Models
     public class DiceItem : INotifyPropertyChanged
     {
         private int number;
+        private bool isLocked;
 
         public int Number
         {
@@ -18,6 +19,16 @@ namespace Dice.Models
             {
                 number = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Number)));
+            }
+        }
+
+        public bool IsLocked
+        {
+            get => isLocked;
+            set
+            {
+                isLocked = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsLocked)));
             }
         }
 

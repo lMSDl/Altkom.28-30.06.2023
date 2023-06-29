@@ -34,41 +34,47 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Image >
-                            <Image.Style>
-                                <Style TargetType="Image">
-                                    <Setter Property="Source" Value="Images/kostkapusta.png"/>
+                        <Button Click="Button_Lock">
+                            <Image>
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Setter Property="Source" Value="Images/kostkapusta.png"/>
 
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Number}"
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Number}"
                                                      Value="1">
-                                            <Setter Property="Source" Value="Images/kostka1.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Number}"
+                                                <Setter Property="Source" Value="Images/kostka1.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Number}"
                                                      Value="2">
-                                            <Setter Property="Source" Value="Images/kostka2.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Number}"
+                                                <Setter Property="Source" Value="Images/kostka2.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Number}"
                                                      Value="3">
-                                            <Setter Property="Source" Value="Images/kostka3.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Number}"
+                                                <Setter Property="Source" Value="Images/kostka3.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Number}"
                                                      Value="4">
-                                            <Setter Property="Source" Value="Images/kostka4.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Number}"
+                                                <Setter Property="Source" Value="Images/kostka4.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Number}"
                                                      Value="5">
-                                            <Setter Property="Source" Value="Images/kostka5.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Number}"
+                                                <Setter Property="Source" Value="Images/kostka5.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Number}"
                                                      Value="6">
-                                            <Setter Property="Source" Value="Images/kostka6.png"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                    
-                                </Style>
-                            </Image.Style>
-                        </Image>
+                                                <Setter Property="Source" Value="Images/kostka6.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsLocked}"
+                                                     Value="True">
+                                                <Setter Property="Opacity" Value="0.5"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 
