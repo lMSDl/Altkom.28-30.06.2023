@@ -7,6 +7,28 @@
         xmlns:models="clr-namespace:Models;assembly=Models"
         mc:Ignorable="d"
         Title="ItemsControlWindow" Height="450" Width="800">
+
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ResourceDictionaries/DataTemplates.xaml"/>
+                <ResourceDictionary Source="/ResourceDictionaries/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <!--<DataTemplate DataType="{x:Type models:Product}"
+                                      x:Key="ProductTemplare">
+            <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
+                <Label Content="Nazwa: "/>
+                <Label Content="{Binding Name}" HorizontalAlignment="Right"/>
+                <Label Content="Data ważności: "/>
+                <Label Content="{Binding ExpirationDate}" HorizontalAlignment="Right"/>
+                <Label Content="Cena: "/>
+                <Label Content="{Binding Price}" HorizontalAlignment="Right"/>
+            </StackPanel>
+        </DataTemplate>-->
+    </Window.Resources>
+
     <Grid>
 
         <DockPanel>
@@ -31,8 +53,9 @@
                     </StackPanel>
                 </TabItem.Header>
                 <ScrollViewer>
-                    <ItemsControl ItemsSource="{Binding Products}">
-                        <ItemsControl.ItemTemplate>
+                        <ItemsControl ItemsSource="{Binding Products}"
+                                      ItemTemplate="{StaticResource ResourceKey=ProductTemplare}">
+                        <!--<ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type models:Product}">
                                 <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
                                     <Label Content="Nazwa: "/>
@@ -43,7 +66,7 @@
                                     <Label Content="{Binding Price}"/>
                                 </StackPanel>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
+                        </ItemsControl.ItemTemplate>-->
 
                         <!--<Label Content="Label1"/>
                         <Label Content="Label2"/>
@@ -70,11 +93,14 @@
             </TabItem>
 
                 <TabItem Header="ListBox" Visibility="Collapsed">
+
+                    
                 <ListBox ItemsSource="{Binding Products}"
                          SelectedItem="{Binding SelectedProduct}"
                          SelectionMode="Extended"
-                         HorizontalContentAlignment="Stretch">
-                    <ListBox.ItemTemplate>
+                         HorizontalContentAlignment="Stretch"
+                         ItemTemplate="{StaticResource ResourceKey=ProductTemplare}">
+                    <!--<ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type models:Product}">
                             <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
                                 <Label Content="Nazwa: "/>
@@ -85,7 +111,7 @@
                                 <Label Content="{Binding Price}" HorizontalAlignment="Right"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>
+                    </ListBox.ItemTemplate>-->
                 </ListBox>
             </TabItem>
                 <TabItem Header="ListView" Visibility="Collapsed">
@@ -93,8 +119,9 @@
                 <ListView ItemsSource="{Binding Products}"
                           SelectedItem="{Binding SelectedProduct}"
                           HorizontalContentAlignment="Stretch"
-                          x:Name="MyListView">
-                    <ListView.ItemTemplate>
+                          x:Name="MyListView"
+                         ItemTemplate="{StaticResource ResourceKey=ProductTemplare}">
+                    <!--<ListView.ItemTemplate>
                         <DataTemplate DataType="{x:Type models:Product}">
                             <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
                                 <Label Content="Nazwa: "/>
@@ -105,7 +132,7 @@
                                 <Label Content="{Binding Price}" HorizontalAlignment="Right"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
+                    </ListView.ItemTemplate>-->
 
                     <ListView.View>
                         <GridView AllowsColumnReorder="False">
