@@ -9,9 +9,21 @@
         Title="ItemsControlWindow" Height="450" Width="800">
     <Grid>
 
-        <TabControl SelectedIndex="2" TabStripPlacement="Left" BorderThickness="10" BorderBrush="Pink"> 
+        <DockPanel>
+            <ComboBox DockPanel.Dock="Top" SelectedIndex="{Binding ElementName=MyTabControl, Path=SelectedIndex, Mode=TwoWay}">
+                <ComboBoxItem Content="ItemControl" />
+                <ComboBoxItem Content="ListBox"/>
+                <ComboBoxItem Content="ListView"/>
+                <ComboBoxItem Content="DataGrid"/>
+            </ComboBox>
 
-            <TabItem>
+            <ComboBox DockPanel.Dock="Top" ItemsSource="{Binding Products}" DisplayMemberPath="Name" />
+
+
+            <TabControl SelectedIndex="2" TabStripPlacement="Bottom"  BorderThickness="10" BorderBrush="Pink"
+                    x:Name="MyTabControl"> 
+
+            <TabItem Visibility="Collapsed">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Rectangle Width="16" Height="16" Fill="Red"/>
@@ -56,8 +68,8 @@
                     </ItemsControl>
                 </ScrollViewer>
             </TabItem>
-            
-            <TabItem Header="ListBox">
+
+                <TabItem Header="ListBox" Visibility="Collapsed">
                 <ListBox ItemsSource="{Binding Products}"
                          SelectedItem="{Binding SelectedProduct}"
                          SelectionMode="Extended"
@@ -76,7 +88,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </TabItem>
-            <TabItem Header="ListView">
+                <TabItem Header="ListView" Visibility="Collapsed">
 
                 <ListView ItemsSource="{Binding Products}"
                           SelectedItem="{Binding SelectedProduct}"
@@ -107,7 +119,7 @@
                 </ListView>
                 
             </TabItem>
-            <TabItem Header="DataGrid">
+                <TabItem Header="DataGrid" Visibility="Collapsed" >
                 <DataGrid ItemsSource="{Binding Products}"
                           SelectedItem="{Binding SelectedProduct}"
                           IsReadOnly="False"
@@ -122,6 +134,6 @@
             </TabItem>
             
         </TabControl>
-        
+        </DockPanel>
     </Grid>
 </Window>
