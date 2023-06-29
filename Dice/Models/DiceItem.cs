@@ -1,13 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Dice.Models
 {
-    public class DiceItem
+    public class DiceItem : INotifyPropertyChanged
     {
-        public int Number { get; set; }
+        private int number;
+
+        public int Number
+        {
+            get => number;
+            set
+            {
+                number = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Number)));
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

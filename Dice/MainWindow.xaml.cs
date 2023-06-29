@@ -50,5 +50,14 @@ namespace Dice
             Dices.Remove(Dices.Last());
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumberOfDices)));
         }
+
+        private void Button_Roll(object sender, RoutedEventArgs e)
+        {
+            var random = new Random((int)DateTime.Now.Ticks);
+            foreach (DiceItem item in Dices)
+            {
+                item.Number = random.Next(1, 7);
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@
 
         <DockPanel>
             <Button Content="Roll"
+                    Click="Button_Roll"
                     DockPanel.Dock="Bottom"/>
             <Button Content="+"
                     Click="Button_Add"
