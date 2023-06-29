@@ -24,16 +24,34 @@ namespace Dice
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public ObservableCollection<DiceItem> Dices { get; set; }
-        public int NumberOfDices => Dices.Count;
+        public int NumberOfDices
+        {
+            get => Dices.Count;
+            set
+            {
+                ChangeNumberOfDices(value);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumberOfDices)));
+            }
+        }
+
+        private void ChangeNumberOfDices(int input)
+        {
+            for (int i = 0, limit = input - NumberOfDices; i < limit; i++)
+            {
+                Dices.Add(new DiceItem());
+            }
+
+                for (int i = 0, limit = NumberOfDices - input; i < limit; i++)
+                {
+                    Dices.Remove(Dices.LastOrDefault());
+                }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
             Dices = new ObservableCollection<DiceItem>();
-            for (int i = 0; i < 6; i++)
-            {
-                Dices.Add(new DiceItem() { Number = i + 1 });
-            }
+            NumberOfDices = 6;
 
             DataContext = this;
         }
@@ -42,13 +60,11 @@ namespace Dice
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            Dices.Add(new DiceItem());
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumberOfDices)));
+            NumberOfDices++;
         }
         private void Button_Remove(object sender, RoutedEventArgs e)
         {
-            Dices.Remove(Dices.LastOrDefault());
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumberOfDices)));
+            NumberOfDices--;
         }
 
         private void Button_Roll(object sender, RoutedEventArgs e)

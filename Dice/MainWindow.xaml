@@ -20,9 +20,9 @@
                     Click="Button_Remove"
                     FontSize="24"
                     DockPanel.Dock="Left"/>
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <Label Content="Count"/>
-                <Label Content="{Binding NumberOfDices}"/>
+                <TextBox Text="{Binding NumberOfDices, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
             </StackPanel>
 
             <ItemsControl ItemsSource="{Binding Dices}">
