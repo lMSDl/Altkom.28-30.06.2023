@@ -32,7 +32,7 @@ namespace Dice
             Dices = new ObservableCollection<DiceItem>();
             for (int i = 0; i < 6; i++)
             {
-                Dices.Add(new DiceItem() { Value = i + 1 });
+                Dices.Add(new DiceItem() { Number = i + 1 });
             }
 
             DataContext = this;
