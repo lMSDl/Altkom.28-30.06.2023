@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         xmlns:models="clr-namespace:Models;assembly=Models"
-                    xmlns:properties="clr-namespace:WpfApp.Properties"
+        xmlns:properties="clr-namespace:WpfApp.Properties"
+        xmlns:controls="clr-namespace:WpfApp.Controls"
         mc:Ignorable="d"
         Title="ItemsControlWindow" Height="450" Width="800">
 
@@ -46,122 +47,46 @@
             <TabControl SelectedIndex="2" TabStripPlacement="Bottom"  BorderThickness="10" BorderBrush="Pink"
                     x:Name="MyTabControl"> 
 
-            <TabItem Visibility="Collapsed">
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="16" Height="16" Fill="Red"/>
-                        <Label Content="ContentControl"/>
-                    </StackPanel>
-                </TabItem.Header>
-                <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding Products}"
-                                      ItemTemplate="{StaticResource ResourceKey=ProductTemplare}">
-                        <!--<ItemsControl.ItemTemplate>
+                    <TabItem Visibility="Collapsed">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="16" Height="16" Fill="Red"/>
+                            <Label Content="ContentControl"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                        <controls:ProductItemsControl Products="{Binding Products}" Background="AliceBlue" />
+                    </TabItem>
+
+                    <TabItem Header="ListBox" Visibility="Collapsed">
+
+                    
+                    <ListBox ItemsSource="{Binding Products}"
+                             SelectedItem="{Binding SelectedProduct}"
+                             SelectionMode="Extended"
+                             HorizontalContentAlignment="Stretch"
+                             ItemTemplate="{StaticResource ResourceKey=ProductTemplare}">
+                        <!--<ListBox.ItemTemplate>
                             <DataTemplate DataType="{x:Type models:Product}">
                                 <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
                                     <Label Content="Nazwa: "/>
-                                    <Label Content="{Binding Name}"/>
+                                    <Label Content="{Binding Name}" HorizontalAlignment="Right"/>
                                     <Label Content="Data ważności: "/>
-                                    <Label Content="{Binding ExpirationDate}"/>
+                                    <Label Content="{Binding ExpirationDate}" HorizontalAlignment="Right"/>
                                     <Label Content="Cena: "/>
-                                    <Label Content="{Binding Price}"/>
+                                    <Label Content="{Binding Price}" HorizontalAlignment="Right"/>
                                 </StackPanel>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>-->
-
-                        <!--<Label Content="Label1"/>
-                        <Label Content="Label2"/>
-                        <Label Content="Label3"/>
-                        <Label Content="Label4"/>
-
-                        <Button Content="Button1"/>
-                        <Button Content="Button2"/>
-                        <Button Content="Button3"/>
-                        <Button Content="Button4"/>
-
-                        <StackPanel>
-                            <Label Content="Label5"/>
-                            <Button Content="Button5"/>
-                        </StackPanel>-->
-
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </ScrollViewer>
-            </TabItem>
-
-                <TabItem Header="ListBox" Visibility="Collapsed">
-
-                    
-                <ListBox ItemsSource="{Binding Products}"
-                         SelectedItem="{Binding SelectedProduct}"
-                         SelectionMode="Extended"
-                         HorizontalContentAlignment="Stretch"
-                         ItemTemplate="{StaticResource ResourceKey=ProductTemplare}">
-                    <!--<ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type models:Product}">
-                            <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
-                                <Label Content="Nazwa: "/>
-                                <Label Content="{Binding Name}" HorizontalAlignment="Right"/>
-                                <Label Content="Data ważności: "/>
-                                <Label Content="{Binding ExpirationDate}" HorizontalAlignment="Right"/>
-                                <Label Content="Cena: "/>
-                                <Label Content="{Binding Price}" HorizontalAlignment="Right"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>-->
-                </ListBox>
-            </TabItem>
+                        </ListBox.ItemTemplate>-->
+                    </ListBox>
+                </TabItem>
                 <TabItem Header="ListView" Visibility="Collapsed">
-
-                <ListView ItemsSource="{Binding Products}"
-                          SelectedItem="{Binding SelectedProduct}"
-                          HorizontalContentAlignment="Stretch"
-                          x:Name="MyListView"
-                         ItemTemplate="{StaticResource ResourceKey=ProductTemplare}">
-                    <!--<ListView.ItemTemplate>
-                        <DataTemplate DataType="{x:Type models:Product}">
-                            <StackPanel Orientation="Vertical" Margin="5" Background="Aqua">
-                                <Label Content="Nazwa: "/>
-                                <Label Content="{Binding Name}" HorizontalAlignment="Right"/>
-                                <Label Content="Data ważności: "/>
-                                <Label Content="{Binding ExpirationDate}" HorizontalAlignment="Right"/>
-                                <Label Content="Cena: "/>
-                                <Label Content="{Binding Price}" HorizontalAlignment="Right"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>-->
-
-                    <ListView.View>
-                        <GridView AllowsColumnReorder="False">
-                            <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"/>
-                            <GridViewColumn Header="Data ważności" DisplayMemberBinding="{Binding ExpirationDate}"/>
-                            <GridViewColumn Header="Cena" DisplayMemberBinding="{Binding Price}"/>
-                        </GridView>
-                    </ListView.View>
-                    
-                    
-                </ListView>
-                
-            </TabItem>
+                    <controls:ProductListView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedItem}"/>
+                </TabItem>
                 <TabItem Header="DataGrid" Visibility="Collapsed" >
-                <DataGrid ItemsSource="{Binding Products}"
-                          SelectedItem="{Binding SelectedProduct}"
-                          IsReadOnly="False"
-                          AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="{x:Static properties:Resources.Name}" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="{x:Static properties:Resources.ExpirationDate}" Binding="{Binding ExpirationDate}"/>
-                            <DataGridTextColumn Header="{x:Static properties:Resources.Price}" Binding="{Binding Price}" IsReadOnly="True"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                
-            </TabItem>
-            
-        </TabControl>
+                    <controls:ProductDataGrid ItemsSource="{Binding Products}" IsReadOnly="True"/>
+                </TabItem>
+
+            </TabControl>
         </DockPanel>
     </Grid>
 </Window>
