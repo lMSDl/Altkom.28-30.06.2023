@@ -115,6 +115,15 @@ namespace Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name length has to be greater or equal 5 .
+        /// </summary>
+        public static string NameTooShort {
+            get {
+                return ResourceManager.GetString("NameTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string No {
@@ -138,6 +147,15 @@ namespace Resources.Properties {
         public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price must be greater than 0.
+        /// </summary>
+        public static string PriceValidationError {
+            get {
+                return ResourceManager.GetString("PriceValidationError", resourceCulture);
             }
         }
         

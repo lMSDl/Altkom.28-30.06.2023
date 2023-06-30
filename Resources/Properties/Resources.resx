@@ -135,6 +135,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NameTooShort" xml:space="preserve">
+    <value>Name length has to be greater or equal 5 </value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="PriceValidationError" xml:space="preserve">
+    <value>Price must be greater than 0</value>
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Refresh</value>

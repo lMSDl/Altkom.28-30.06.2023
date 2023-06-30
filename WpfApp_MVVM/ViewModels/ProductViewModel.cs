@@ -19,6 +19,6 @@ namespace WpfApp_MVVM.ViewModels
             Product = product;
         }
 
-        public ICommand OkCommand => new RelayCommand(x => ((Window)x).DialogResult = true );
+        public ICommand OkCommand => new RelayCommand(x => ((Window)x).DialogResult = true, x => !Product.HasErrors );
     }
 }

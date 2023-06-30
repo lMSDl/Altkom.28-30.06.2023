@@ -6,6 +6,7 @@
       xmlns:properties="clr-namespace:Resources.Properties;assembly=Resources"
         xmlns:local="clr-namespace:WpfApp_MVVM.Views"
         xmlns:converters="clr-namespace:WpfApp_MVVM.Converters"
+        xmlns:validationRules="clr-namespace:WpfApp_MVVM.ValidationRules"
         mc:Ignorable="d"
         Title="ProductView" Height="450" Width="800"
         x:Name="Dialog">
@@ -30,11 +31,29 @@
             </Grid>
             <StackPanel>
                 <Label Content="{x:Static properties:Resources.Name}"/>
-                <TextBox Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                         ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
 
                 <Label Content="{x:Static properties:Resources.Price}"/>
-                <TextBox Text="{Binding Product.Price, UpdateSourceTrigger=PropertyChanged}"/>
-                
+
+                <TextBox >
+                    <TextBox.Text>
+                        <Binding Path="Product.Price" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationRules:PriceValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red" HorizontalAlignment="Right"/>
+                                <AdornedElementPlaceholder/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+
                 <Label Content="{x:Static properties:Resources.ExpirationDate}"/>
                 <DatePicker SelectedDate="{Binding Product.ExpirationDate, UpdateSourceTrigger=PropertyChanged}"/>
                 
