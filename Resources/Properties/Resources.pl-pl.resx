@@ -129,8 +129,14 @@
   <data name="ExpirationDate" xml:space="preserve">
     <value>Data przydatności</value>
   </data>
+  <data name="IsExpired" xml:space="preserve">
+    <value>Przeterminowany</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nazwa</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nie</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
@@ -140,5 +146,8 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Odśwież</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Tak</value>
   </data>
 </root>

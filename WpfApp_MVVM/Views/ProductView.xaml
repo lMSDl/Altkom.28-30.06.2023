@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:properties="clr-namespace:Resources.Properties;assembly=Resources"
         xmlns:local="clr-namespace:WpfApp_MVVM.Views"
+        xmlns:converters="clr-namespace:WpfApp_MVVM.Converters"
         mc:Ignorable="d"
         Title="ProductView" Height="450" Width="800"
         x:Name="Dialog">
+    <Window.Resources>
+        <converters:DateToIsExpiredConverter x:Key="DateToIsExpiredConverter"/>
+    </Window.Resources>
+    
     <Grid>
         <DockPanel>
             <Grid DockPanel.Dock="Bottom">
@@ -26,10 +31,16 @@
             <StackPanel>
                 <Label Content="{x:Static properties:Resources.Name}"/>
                 <TextBox Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="{x:Static properties:Resources.ExpirationDate}"/>
-                <TextBox Text="{Binding Product.ExpirationDate, UpdateSourceTrigger=PropertyChanged}"/>
+
                 <Label Content="{x:Static properties:Resources.Price}"/>
                 <TextBox Text="{Binding Product.Price, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <Label Content="{x:Static properties:Resources.ExpirationDate}"/>
+                <DatePicker SelectedDate="{Binding Product.ExpirationDate, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <Label Content="{x:Static properties:Resources.IsExpired}"/>
+                <Label Content="{Binding Product.ExpirationDate, Converter={StaticResource DateToIsExpiredConverter}}"/>
+                
             </StackPanel>
         </DockPanel>
     </Grid>
