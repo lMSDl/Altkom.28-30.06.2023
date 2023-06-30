@@ -29,6 +29,13 @@ namespace WpfApp_MVVM.ViewModels
             }
         }
 
+        public Product? SelectedProduct { get; set; }
+
         public ICommand LoadedCommand => new RelayCommand(x => Products = new ObservableCollection<Product>(_service.Read()));
+        public ICommand DeleteCommand => new RelayCommand(x => {
+                                                                    _service.Delete(SelectedProduct!);
+                                                                    Products.Remove(SelectedProduct!);
+                                                               },
+                                                          x => SelectedProduct is not null );
     }
 }

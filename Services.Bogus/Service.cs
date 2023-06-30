@@ -12,6 +12,11 @@ namespace Services.Bogus
             _collection = faker.Generate(15);
         }
 
+        public void Delete(T item)
+        {
+            _collection.Remove(item);
+        }
+
         public IEnumerable<T> Read()
         {
             return _collection.ToList();
