@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Interfaces", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dice", "Dice\Dice.csproj", "{168B47D6-E495-459B-868E-9A1F2B5AB2AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_MVVM", "WpfApp_MVVM\WpfApp_MVVM.csproj", "{5614DA4E-E6BF-40DE-A925-4F301F304F2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{168B47D6-E495-459B-868E-9A1F2B5AB2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{168B47D6-E495-459B-868E-9A1F2B5AB2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{168B47D6-E495-459B-868E-9A1F2B5AB2AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5614DA4E-E6BF-40DE-A925-4F301F304F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5614DA4E-E6BF-40DE-A925-4F301F304F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5614DA4E-E6BF-40DE-A925-4F301F304F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5614DA4E-E6BF-40DE-A925-4F301F304F2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
