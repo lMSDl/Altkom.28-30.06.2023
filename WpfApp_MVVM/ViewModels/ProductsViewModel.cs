@@ -17,8 +17,9 @@ namespace WpfApp_MVVM.ViewModels
 {
     public class ProductsViewModel : NotifyPropertyChanged
     {
-        private IService<Product> _service = new Service<Product>(new ProductFaker());
+        private IAsyncService<Product> _service = new AsyncService<Product>(new ProductFaker());
         private ObservableCollection<Product> products;
+        private bool isLoading;
 
         public ObservableCollection<Product> Products
         {
@@ -31,22 +32,45 @@ namespace WpfApp_MVVM.ViewModels
         }
 
         public Product? SelectedProduct { get; set; }
-
-        public ICommand LoadedCommand => new RelayCommand(x => Products = new ObservableCollection<Product>(_service.Read()));
-        public ICommand DeleteCommand => new RelayCommand(x =>
+        public bool IsLoading
         {
-            _service.Delete(SelectedProduct!.Id);
+            get => isLoading;
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand LoadedCommand => new RelayCommand(async x => Products = await LoadData(), x => !IsLoading);
+
+        private async Task<ObservableCollection<Product>> LoadData()
+        {
+            IsLoading = true;
+            try
+            {
+                return new ObservableCollection<Product>(await _service.ReadAsync());
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
+
+        public ICommand DeleteCommand => new RelayCommand(async x =>
+        {
+            await _service.DeleteAsync(SelectedProduct!.Id);
             Products.Remove(SelectedProduct!);
         },
-                                                          x => SelectedProduct is not null);
+                                                                      x => SelectedProduct is not null);
         public ICommand EditCommand => new DialogCommand<ProductViewModel>(GetProductViewModel,
                                                                           ProductEdited,
                                                                           x => SelectedProduct is not null);
 
-        private void ProductEdited(ProductViewModel x)
+        private async void ProductEdited(ProductViewModel x)
         {
             var item = x.Product;
-            _service.Edit(SelectedProduct!.Id, item);
+            await _service.EditAsync(SelectedProduct!.Id, item);
             Products.Remove(SelectedProduct);
             Products.Add(item);
         }

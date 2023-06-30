@@ -24,6 +24,10 @@
                 <Label Content="Count"/>
                 <TextBox Text="{Binding NumberOfDices, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
             </StackPanel>
+            <ProgressBar Maximum="{Binding MaxProgress}"
+                         Value="{Binding Progress}"
+                         Height="16"
+                         DockPanel.Dock="Bottom"/>
 
             <ItemsControl ItemsSource="{Binding Dices}">
                 <ItemsControl.ItemsPanel>

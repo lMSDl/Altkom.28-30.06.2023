@@ -23,6 +23,28 @@ namespace Dice
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private float maxProgress;
+        private float progress;
+
+        public float MaxProgress
+        {
+            get => maxProgress;
+            set
+            {
+                maxProgress = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MaxProgress)));
+            }
+        }
+        public float Progress
+        {
+            get => progress;
+            set
+            {
+                progress = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Progress)));
+            }
+        }
+
         public ObservableCollection<DiceItem> Dices { get; set; }
         public int NumberOfDices
         {
@@ -67,13 +89,14 @@ namespace Dice
             NumberOfDices--;
         }
 
-        private void Button_Roll(object sender, RoutedEventArgs e)
+        private async void Button_Roll(object sender, RoutedEventArgs e)
         {
-            var random = new Random((int)DateTime.Now.Ticks);
+            /*var random = new Random((int)DateTime.Now.Ticks);
             foreach (DiceItem item in Dices.Where(x => !x.IsLocked))
             {
                 item.Number = random.Next(1, 7);
-            }
+            }*/
+            await RollAsync();
         }
 
         private void Button_Lock(object sender, RoutedEventArgs e)
@@ -85,6 +108,28 @@ namespace Dice
                     item.IsLocked = !item.IsLocked;
                 }
             }
+        }
+
+
+        private async Task RollAsync()
+        {
+            var random = new Random((int)DateTime.Now.Ticks);
+            MaxProgress = NumberOfDices;
+            Progress = 0;
+            var tasks = Dices.Where(x => !x.IsLocked).Select(x => RollAsync(random, x)).ToList();
+
+            await Task.WhenAll(tasks);
+        }
+
+        private async Task RollAsync(Random random, DiceItem item)
+        {
+            var numerofRols = random.Next(25, 75);
+            for (int i = 0; i < numerofRols; i++)
+            {
+                item.Number = random.Next(1, 7);
+                await Task.Delay(25);
+            }
+            Progress++;
         }
     }
 }
