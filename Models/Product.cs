@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class Product
+    public class Product : Entity
     {
         [DisplayName("Nazwa")]
         public string Name { get; set; } = string.Empty;
@@ -11,5 +11,6 @@ namespace Models
 
         public string Summary => $"{Name}; {Price} zł;";
         public string Type => this.GetType().ToString();
+
     }
 }

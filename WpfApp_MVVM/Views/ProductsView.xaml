@@ -28,13 +28,19 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Content="{x:Static properties:Resources.Refresh}"
                         Command="{Binding LoadedCommand}"
                         Grid.Column="0"/>
+                <Button Content="{x:Static properties:Resources.Edit}"
+                        Command="{Binding EditCommand}"
+                        CommandParameter="{x:Type local:ProductView}"
+                        Grid.Column="1"/>
+
                 <Button Content="{x:Static properties:Resources.Delete}"
                         Command="{Binding DeleteCommand}"
-                        Grid.Column="1"/>
+                        Grid.Column="2"/>
             </Grid>
             
         <DataGrid 
