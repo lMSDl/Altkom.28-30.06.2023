@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace WpfApp_MVVM.Converters
 {
-    internal class DateToIsExpiredConverter : IValueConverter
+    public class DateToIsExpiredConverter : BaseConverter /*MarkupExtension, IValueConverter*/
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var date = (DateTime)value;
 
@@ -19,9 +20,14 @@ namespace WpfApp_MVVM.Converters
             return isExpired ? Resources.Properties.Resources.Yes : Resources.Properties.Resources.No;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        /*public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotSupportedException();
         }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }*/
     }
 }

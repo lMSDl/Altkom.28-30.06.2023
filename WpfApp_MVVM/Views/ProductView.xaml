@@ -9,9 +9,9 @@
         mc:Ignorable="d"
         Title="ProductView" Height="450" Width="800"
         x:Name="Dialog">
-    <Window.Resources>
+    <!--<Window.Resources>
         <converters:DateToIsExpiredConverter x:Key="DateToIsExpiredConverter"/>
-    </Window.Resources>
+    </Window.Resources>-->
     
     <Grid>
         <DockPanel>
@@ -39,7 +39,8 @@
                 <DatePicker SelectedDate="{Binding Product.ExpirationDate, UpdateSourceTrigger=PropertyChanged}"/>
                 
                 <Label Content="{x:Static properties:Resources.IsExpired}"/>
-                <Label Content="{Binding Product.ExpirationDate, Converter={StaticResource DateToIsExpiredConverter}}"/>
+                <!--<Label Content="{Binding Product.ExpirationDate, Converter={StaticResource DateToIsExpiredConverter}}"/>-->
+                <Label Content="{Binding Product.ExpirationDate, Converter={converters:DateToIsExpiredConverter}}"/>
                 
             </StackPanel>
         </DockPanel>
