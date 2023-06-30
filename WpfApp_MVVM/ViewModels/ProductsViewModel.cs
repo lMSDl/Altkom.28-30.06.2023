@@ -33,23 +33,40 @@ namespace WpfApp_MVVM.ViewModels
         public Product? SelectedProduct { get; set; }
 
         public ICommand LoadedCommand => new RelayCommand(x => Products = new ObservableCollection<Product>(_service.Read()));
-        public ICommand DeleteCommand => new RelayCommand(x => {
-                                                                    _service.Delete(SelectedProduct!.Id);
-                                                                    Products.Remove(SelectedProduct!);
-                                                               },
-                                                          x => SelectedProduct is not null );
-        public ICommand EditCommand => new RelayCommand(x =>
-                                                        {
-                                                            var item = (Product)SelectedProduct!.Clone();
-                                                            Window window = (Window)Activator.CreateInstance((Type)x!)!;
-                                                            window.DataContext = new ProductViewModel(item);
-                                                            if(window.ShowDialog() == true)
-                                                            {
-                                                                _service.Edit(SelectedProduct!.Id, item);
-                                                                Products.Remove(SelectedProduct);
-                                                                Products.Add(item);
-                                                            }
-                                                        },
-                                                        x => SelectedProduct is not null);
+        public ICommand DeleteCommand => new RelayCommand(x =>
+        {
+            _service.Delete(SelectedProduct!.Id);
+            Products.Remove(SelectedProduct!);
+        },
+                                                          x => SelectedProduct is not null);
+        public ICommand EditCommand => new DialogCommand<ProductViewModel>(GetProductViewModel,
+                                                                          ProductEdited,
+                                                                          x => SelectedProduct is not null);
+
+        private void ProductEdited(ProductViewModel x)
+        {
+            var item = x.Product;
+            _service.Edit(SelectedProduct!.Id, item);
+            Products.Remove(SelectedProduct);
+            Products.Add(item);
+        }
+
+        private ProductViewModel GetProductViewModel()
+        {
+            return new ProductViewModel((Product)SelectedProduct!.Clone());
+        }
+        //public ICommand EditCommand => new RelayCommand(x =>
+        //                                                {
+        //                                                    var item = (Product)SelectedProduct!.Clone();
+        //                                                    Window window = (Window)Activator.CreateInstance((Type)x!)!;
+        //                                                    window.DataContext = new ProductViewModel(item);
+        //                                                    if(window.ShowDialog() == true)
+        //                                                    {
+        //                                                        _service.Edit(SelectedProduct!.Id, item);
+        //                                                        Products.Remove(SelectedProduct);
+        //                                                        Products.Add(item);
+        //                                                    }
+        //                                                },
+        //                                                x => SelectedProduct is not null);
     }
 }
