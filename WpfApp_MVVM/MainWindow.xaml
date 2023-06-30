@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_MVVM"
         xmlns:v="clr-namespace:WpfApp_MVVM.Views"
+        xmlns:vm="clr-namespace:WpfApp_MVVM.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-        <v:ProductsView/>
+
+    <!--<Window.Resources>
+        <DataTemplate DataType="{x:Type vm:OrdersViewModel}">
+            <v:OrdersView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ProductsViewModel}">
+            <v:ProductsView/>
+        </DataTemplate>
+    </Window.Resources>-->
+
+    <DockPanel>
+        <!-- Navigation Buttons -->
+        <Border DockPanel.Dock="Left">
+            <StackPanel>
+                <Button Content="Products" Click="Button_Products"/>
+                <Button Content="Orders" Click="Button_Orders"/>
+                </StackPanel>
+        </Border>
+
+        <!-- Content Area -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame x:Name="MyFrame" Grid.Column="0"  />
+            <Frame Grid.Column="1" >
+                <Frame.Content>
+                    <v:ProductsView/>
+                </Frame.Content>
+            </Frame>
+            <Frame Grid.Column="2" >
+                <Frame.Content>
+                    <v:OrdersView/>
+                </Frame.Content>
+            </Frame>
+        </Grid>
+    </DockPanel>
 </Window>
  

@@ -12,27 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp_MVVM.Views;
 
-namespace WpfApp_MVVM
+namespace WpfApp_MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for OrdersView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OrdersView : Page
     {
-        public MainWindow()
+        public OrdersView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Orders(object sender, RoutedEventArgs e)
-        {
-            MyFrame.Content = new OrdersView();
-        }
-        private void Button_Products(object sender, RoutedEventArgs e)
-        {
-            MyFrame.Content = new ProductsView();
         }
     }
 }
