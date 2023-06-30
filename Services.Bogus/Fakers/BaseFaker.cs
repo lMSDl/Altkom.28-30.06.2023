@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Services.Bogus.Fakers
 {
-    public class BaseFaker<T> : Faker<T> where T : class
+    public abstract class BaseFaker<T> : Faker<T> where T : class
     {
         public BaseFaker() : base("pl")
         {
